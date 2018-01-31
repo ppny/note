@@ -1,5 +1,8 @@
 # promise
-Es6规定，Promise对象是一个构造函数，用来生成Promise实例。
+### 用法
+> Es6规定，Promise对象是一个构造函数，用来生成Promise实例。
+
+> resolve函数的作用是，将<code>Promist</code>对象的状态从"未完成"变成"成功"（即从pending变成resolved）,在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将<code>Promist</code>对象的状态从"未完成"变成"失败"（即从pending变为rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去
 
 ```javascript
 const ajax = model => { 

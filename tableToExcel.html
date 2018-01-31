@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #4d4d4d;
+            padding: 5px;
+        }
+    </style>
+    
+
+</head>
+
+<body>
+    <table id="ta">
+        <tr>
+            <th></th>
+            <th>一</th>
+            <th>二</th>
+            <th>三</th>
+            <th>四</th>
+        </tr>
+        <tr>
+            <td>万籁寂无声</td>
+            <td>衾铁棱棱近五更</td>
+            <td>香断灯昏吟未稳</td>
+            <td>凄清</td>
+            <td>只有霜华伴月明</td>
+        </tr>
+        <tr>
+            <td>应是夜寒凝</td>
+            <td>恼得梅花睡不成</td>
+            <td>我念梅花花念我</td>
+            <td>关情</td>
+            <td>起看清冰满玉瓶</td>
+        </tr>
+    </table>
+    <br/>
+    <input type="button" value="导出EXCEL" onclick="tableToExcel('ta')" />
+    <script type="text/javascript" language="javascript">
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                base64 = function (s) {
+                    return window.btoa(unescape(encodeURIComponent(s)))
+                },
+                format = function (s, c) {
+                    return s.replace(/{(\w+)}/g,
+                        function (m, p) {
+                            return c[p];
+                        })
+                },
+                viewTitle = function (s, c) {
+                    return s.replace(/none/g, 'block')
+                }
+            return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table)
+                console.log(viewTitle(table.innerHTML));
+                var ctx = { worksheet: name || 'Worksheet', table: viewTitle(table.innerHTML) }
+                var link = document.createElement("a");
+                link.download = "export.xls";
+                link.href = uri + base64(format(template, ctx));
+                link.click();
+                // window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+    </script>
+</body>
+
+</html>

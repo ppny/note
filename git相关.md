@@ -1,0 +1,1 @@
+Unable to create 'E:/studyspace/snake2/.git/index.lock': File exists.

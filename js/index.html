@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .something-meaningful {
+        background: tan;
+        border-radius: 0.8em;
+        padding: 1em;
+        box-shadow: 0 0 0 0.6em #655;
+        outline: 0.6em solid #655;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="something-meaningful">
+      <div>
+        I have a nice subtle inner rounding, don't I look pretty?
+      </div>
+    </div>
+    <script>
+      function SuperType() {
+        this.property = true;
+      }
+      SuperType.prototype.getSuperValue = function() {
+        return this.property;
+      };
+      function SubType() {
+        this.subproperty = false;
+      }
+      SubType.prototype = new SuperType();
+      SubType.prototype.getSubValue = function() {
+        return this.subproperty;
+      };
+      var instance = new SubType();
+      console.log(instance.getSuperValue());
+
+      for (var i = 1; i <= 5; i++) {
+        setTimeout(function timer() {
+          console.log(i);
+        }, i * 1000);
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        setTimeout(function timer() {
+          console.log(i);
+        }, i * 1000);
+      }
+
+      function foo() {
+        var a = 2;
+        function bar() {
+          console.log(a);
+        }
+        return bar;
+      }
+      var baz = foo();
+      baz();
+    </script>
+  </body>
+</html>

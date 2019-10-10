@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #SomeElementYouWantToAnimate {
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="SomeElementYouWantToAnimate">
+
+  </div>
+</body>
+<script>
+  var start = null;
+  var element = document.getElementById('SomeElementYouWantToAnimate');
+  element.style.position = 'absolute';
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start;
+    element.style.left = Math.min(progress / 10, 200) + 'px';
+    if (progress < 2000) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  for (var i = 0; i < 10; i++) {
+    setTimeout(() => {
+      //console.log(i)
+    }, 0)
+  }
+
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      //console.log(i)
+    }, 0)
+  }
+
+  Array.prototype.method = function () {
+    console.log(this.length);
+  }
+  var myArray = [1, 2, 4, 5, 6, 7]
+  myArray.name = "数组"
+  for (var index in myArray) {
+    console.log(myArray[index]);
+  }
+
+  let obj1 = { name: 'ES6', birth: '1996' }
+  let obj2 = { name: 'H5', birth: '2001' }
+  let arr = ['a', 'b', 'c']
+  arr.length = 5
+  for (i in obj1) {
+    console.log('for...in遍历对象', i)
+  }
+  for (i in arr) {
+    console.log('for...in遍历数组', i)
+  }
+  for (var value of arr) {
+    console.log(value);
+  }
+  for (i of arr) {
+    console.log(i)
+  }
+</script>
+
+</html>

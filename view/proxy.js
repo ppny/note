@@ -1,14 +1,14 @@
-var obj = new Proxy (
+var obj = new Proxy(
   {},
   {
-    get: function (target, key, receiver) {
-      console.log (`getting ${key}!`);
-      return Reflect.get (target, key, receiver);
+    get: function(target, key, receiver) {
+      console.log(`getting ${key}!`);
+      return Reflect.get(target, key, receiver);
     },
-    set: function (target, key, value, receiver) {
-      console.log (`setting ${key}!`);
-      return Reflect.set (target, key, value, receiver);
-    },
+    set: function(target, key, value, receiver) {
+      console.log(`setting ${key}!`);
+      return Reflect.set(target, key, value, receiver);
+    }
   }
 );
-obj.name = '王亚茹';
+obj.name = "王亚茹";

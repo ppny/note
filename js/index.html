@@ -22,7 +22,7 @@
       </div>
     </div>
     <script>
-      function SuperType() {
+      /**function SuperType() {
         this.property = true;
       }
       SuperType.prototype.getSuperValue = function() {
@@ -59,6 +59,116 @@
       }
       var baz = foo();
       baz();
+
+      (function() {
+        console.info(this);
+        console.info(arguments);
+      })(window);
+      (function() {
+        console.info(this);
+        console.info(arguments);
+      })(window);*/
+
+      /**var name = "out";
+      function sayName(a, b, c) {
+        console.log(a, b, c);
+        console.log(this.name);
+      }
+      sayName();
+      var innerObj = {
+        name: "inner"
+      };
+      Function.prototype.newBind = function(context) {
+        console.log(context);
+      };
+      Function.prototype.newCall = function(context, ...rest) {
+        context.fn = this;
+        context.fn(...rest);
+      };
+      Function.prototype.newApply = function(context) {
+        console.log(this);
+        console.log(context);
+      };
+      var newSayName = sayName.newBind(innerObj);
+      var newSayName = sayName.newCall(innerObj, 1, 2, 3);*/
+      /**var arr = [];
+      arr[0] = 0;
+      arr[5] = 5;
+      arr[8] = 8;
+      for (var i = 0; i < arr.length; i++) {
+        console.log(i);
+      }
+      console.log("*****");
+      var arr2 = arr.forEach((item, index) => {
+        console.log(index);
+        return item + "我是forEach";
+      });
+      console.log(arr2);
+      console.log("*****");
+      var arr3 = arr.map((item, index) => {
+        console.log(index);
+        return item + "我是map";
+      });
+      console.log(arr);
+      console.log(arr3);
+
+      var students = [
+        {
+          name: "小赵",
+          age: "15"
+        },
+        {
+          name: "小钱",
+          age: "15"
+        },
+        {
+          name: "孙",
+          age: "15"
+        }
+      ];
+      console.log(students);
+      students.map((item, index) => {
+        item.name = item.name + "afterMap";
+      });
+      console.log(students);*/
+      /**function foo(num) {
+        console.log("foo:" + num);
+        this.count++;
+      }
+      foo.count = 0;
+      var i;
+      for (i = 0; i < 10; i++) {
+        if (i > 5) {
+          foo(i);
+        }
+      }
+      console.log(foo.count);*/
+
+      /**function foo() {
+        var a = 2;
+        this.bar();
+      }
+      function bar() {
+        console.log(this.a);
+      }
+      foo();*/
+      var name = "out";
+      function getThis2() {
+        console.log(this);
+      }
+
+      const getThis = () => {
+        console.log(this);
+      };
+      getThis();
+      getThis2();
+      const obj = {
+        name: "里面的",
+        getThis: getThis,
+        getThis2: getThis2
+      };
+      obj.getThis();
+      obj.getThis2();
     </script>
   </body>
 </html>

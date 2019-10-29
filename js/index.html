@@ -152,23 +152,18 @@
         console.log(this.a);
       }
       foo();*/
-      var name = "out";
-      function getThis2() {
-        console.log(this);
+      const fn = () => {
+        console.log("计时器");
+      };
+      timeout = setTimeout(fn, 1000);
+      // clearTimeout(timeout);
+      function debounce(fn, wait) {
+        const timer = null;
+        if (timeout) {
+          clearTimeout(timer);
+          timer = setTimeout(fn, wait);
+        }
       }
-
-      const getThis = () => {
-        console.log(this);
-      };
-      getThis();
-      getThis2();
-      const obj = {
-        name: "里面的",
-        getThis: getThis,
-        getThis2: getThis2
-      };
-      obj.getThis();
-      obj.getThis2();
     </script>
   </body>
 </html>
